@@ -85,7 +85,7 @@ fn main() {
 
     let mut wrapper_cc_paths = vec![];
 
-    let wrapper_root = std::path::PathBuf::from("rdkit-lib");
+    let wrapper_root = std::path::PathBuf::from("cpp");
     for file in &rust_files {
         let file_name = file.file_name().unwrap();
         let file_name = file_name.to_str().unwrap();

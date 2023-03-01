@@ -38,8 +38,9 @@ mod tests {
     fn convert_bitvect_u64_to_u8() {
         // 283686952306183
         let bytes: [u8; 8] = [
-            0b00000000, 0b00000001, 0b00000010, 0b00000011, 0b00000100, 0b00000101, 0b00000110,
-            0b00000111,
+            0b_0000_0000, 0b_0000_0001, 0b_0000_0010,
+            0b_0000_0011, 0b_0000_0100, 0b_0000_0101,
+            0b_0000_0110, 0b_0000_0111,
         ];
         let mut byte_reader = Cursor::new(&bytes[..]);
         let bignum = byte_reader.read_u64::<BigEndian>().unwrap();
