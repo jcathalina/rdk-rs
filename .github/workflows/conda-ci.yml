@@ -26,10 +26,13 @@ jobs:
           python-version: 3.7
           use-only-tar-bz2: true # IMPORTANT: This needs to be set for caching to work properly!
       - name: Install RDKit
-        run: conda install -c conda-forge rdkit==2022.09.1
-      - uses: actions-rs/cargo@v1
-        with:
-          command: check
+        run: |
+          conda install -c conda-forge rdkit==2022.09.1
+          conda activate test
+          cargo check
+      # - uses: actions-rs/cargo@v1
+      #   with:
+      #     command: check
 
 # on:
 #   push: {}
