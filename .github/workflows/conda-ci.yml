@@ -1,0 +1,32 @@
+on: [push, pull_request]
+
+name: Conda CI
+
+jobs:
+  check:
+    name: Build with conda RDKit
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        shell: bash -l {0}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macOS-latest]
+        rust: [stable]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: ${{ matrix.rust }}
+          override: true
+      - uses: conda-incubator/setup-miniconda@v2
+        with:
+          auto-update-conda: true
+          python-version: 3.7
+          use-only-tar-bz2: true # IMPORTANT: This needs to be set for caching to work properly!
+      - name: Install RDKit
+        run: |
+          conda install -c conda-forge rdkit==2022.09.1
+          conda activate test
+          cargo check

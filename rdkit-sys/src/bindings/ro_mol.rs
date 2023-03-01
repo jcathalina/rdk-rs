@@ -1,7 +1,7 @@
 #[cxx::bridge(namespace = "RDKit")]
 pub mod ffi {
     unsafe extern "C++" {
-        include!("rdkit-lib/include/ro_mol.h");
+        include!("cpp/include/ro_mol.h");
 
         pub type ROMol;
         pub type ExplicitBitVect = crate::fingerprint_ffi::ExplicitBitVect;

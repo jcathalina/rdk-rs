@@ -1,11 +1,11 @@
 [package]
-name = "rdkit-rs"
+name = "rdk-rs"
 version = "0.1.0"
 edition = "2021"
 authors = ["Julius Catahalina <julius.cathalina@gmail.com>"]
 description = "Rust wrappers for the RDKit C++ front-end"
 license = "MIT/Apache-2.0"
-repository = "https://github.com/jcathalina/rdkit-rs"
+repository = "https://github.com/jcathalina/rdk-rs"
 readme = "README.md"
 keywords = ["rdkit", "ffi", "cheminformatics"]
 categories = ["external-ffi-bindings", "chemistry", "science"]
