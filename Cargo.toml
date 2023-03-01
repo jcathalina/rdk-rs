@@ -13,4 +13,9 @@ categories = ["external-ffi-bindings", "chemistry", "science"]
 [dependencies]
 cxx = "1.0"
 thiserror = "1"
-rdkit-sys = { version = "0.1.0", path = "rdkit-sys", features=["dynamic-linking-from-conda"] }
+rdkit-sys = { path = "rdkit-sys", version = "0.1.0" }
+bitvec = "1"
+byteorder = "1.4.3"
+
+[workspace]
+members = ["rdkit-sys"]
