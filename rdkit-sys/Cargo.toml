@@ -1,0 +1,24 @@
+[package]
+name = "rdkit-sys"
+version = "0.1.0"
+edition = "2021"
+authors = ["Julius Catahalina <julius.cathalina@gmail.com>"]
+description = "Low-level FFI Rust bindings for the RDKit C++ front-end"
+license = "MIT/Apache-2.0"
+repository = "https://github.com/jcathalina/rdkit-rs"
+readme = "README.md"
+keywords = ["rdkit", "ffi", "cheminformatics"]
+categories = ["external-ffi-bindings", "chemistry", "science"]
+build = "build.rs"
+
+[dependencies]
+cxx = "1.0"
+
+[build-dependencies]
+env_logger = "0.9.0"
+cxx-build = "1.0"
+which = "4.2.5"
+
+[features]
+default = []
+dynamic-linking-from-conda = []
