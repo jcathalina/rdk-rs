@@ -14,13 +14,13 @@ jobs:
       - name: Update Homebrew
         run: |
           brew update --preinstall
-          cat "$(brew --repository)/Library/Taps/homebrew/homebrew-core/Formula/foo.rb" > .github/brew-formulae
+          cat "$(brew --repository)/Library/Taps/homebrew/homebrew-core/Formula/rdkit.rb" > .github/brew-formulae
       - name: Configure Homebrew cache
         uses: actions/cache@v2
         with:
           path: |
-            ~/Library/Caches/Homebrew/foo--*
-            ~/Library/Caches/Homebrew/downloads/*--foo-*
+            ~/Library/Caches/Homebrew/rdkit--*
+            ~/Library/Caches/Homebrew/downloads/*--rdkit-*
           key: brew-${{ hashFiles('.github/brew-formulae') }}
           restore-keys: brew-
       - name: Install Homebrew dependencies
