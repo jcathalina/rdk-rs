@@ -18,9 +18,6 @@ jobs:
           test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
           test -r ~/.bash_profile && echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >> ~/.bash_profile
           echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >> ~/.profile
-      - name: Update Homebrew
-        run: |
-          brew update --preinstall
       - name: Install Homebrew dependencies
         run: |
           env HOMEBREW_NO_AUTO_UPDATE=1 brew install rdkit
