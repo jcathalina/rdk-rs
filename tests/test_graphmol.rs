@@ -1,4 +1,4 @@
-use rdkit_rs::{ROMol, RWMol};
+use rdk_rs::{ROMol, RWMol};
 
 #[test]
 fn test_rdmol() {

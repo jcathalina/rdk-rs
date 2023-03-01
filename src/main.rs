@@ -1,4 +1,4 @@
-use rdkit_rs::ROMol;
+use rdk_rs::ROMol;
 
 
 fn main() {
