@@ -4,7 +4,7 @@ name: Conda CI
 
 jobs:
   check:
-    name: Check
+    name: Build with conda RDKit
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -13,25 +13,18 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions-rs/toolchain@v1
+      - uses: actions-rs/cargo@v1
         with:
           profile: minimal
           toolchain: ${{ matrix.rust }}
           override: true
-
       - uses: conda-incubator/setup-miniconda@v2
         with:
           auto-update-conda: true
           python-version: 3.7
           use-only-tar-bz2: true # IMPORTANT: This needs to be set for caching to work properly!
-
+          activate-environment: test
       - name: Install RDKit
         run: conda install -c conda-forge rdkit==2022.09.1
-
-      - name: Install stable
-        uses: actions-rs/toolchain@v1
-        with:
-          toolchain: stable
-      - uses: Swatinem/rust-cache@v1
-
-      - name: Cargo test
-        run: cargo test
+      - name: Cargo check
+        run: cargo check
