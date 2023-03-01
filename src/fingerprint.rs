@@ -48,14 +48,14 @@ mod tests {
 
         let vec_of_smallnum: Vec<u8> = bitvect_of_bignum
             .iter()
-            .map(|bignum| {
+            .map(|_bignum| {
                 let mut bytes = vec![];
-                bytes.write_u64::<BigEndian>(0 as u64);
+                bytes.write_u64::<BigEndian>(0 as u64).unwrap();
                 bytes
             })
             .flatten()
             .collect();
-        let bitvect_of_smallnum: BitVec<u8, Lsb0> = BitVec::from_vec(vec_of_smallnum);
+        let _bitvect_of_smallnum: BitVec<u8, Lsb0> = BitVec::from_vec(vec_of_smallnum);
 
         panic!("{}", bignum);
     }
