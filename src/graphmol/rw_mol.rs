@@ -1,12 +1,12 @@
 use std::fmt::Formatter;
 
 use cxx::{let_cxx_string, SharedPtr};
-use rdkit_sys::*;
+use rdk_sys::*;
 
 use crate::ROMol;
 
 pub struct RWMol {
-    pub(crate) ptr: SharedPtr<rdkit_sys::rw_mol_ffi::RWMol>,
+    pub(crate) ptr: SharedPtr<rdk_sys::rw_mol_ffi::RWMol>,
 }
 
 impl RWMol {
@@ -18,7 +18,7 @@ impl RWMol {
     ) -> Option<Self> {
         let_cxx_string!(mol_block = mol_block);
 
-        let ptr = rdkit_sys::rw_mol_ffi::rw_mol_from_mol_block(
+        let ptr = rdk_sys::rw_mol_ffi::rw_mol_from_mol_block(
             &mol_block,
             sanitize,
             remove_hs,
@@ -35,8 +35,8 @@ impl RWMol {
     pub fn as_smile(&self) -> String {
         let cast_ptr = unsafe {
             std::mem::transmute::<
-                SharedPtr<rdkit_sys::rw_mol_ffi::RWMol>,
-                SharedPtr<rdkit_sys::ro_mol_ffi::ROMol>,
+                SharedPtr<rdk_sys::rw_mol_ffi::RWMol>,
+                SharedPtr<rdk_sys::ro_mol_ffi::ROMol>,
             >(self.ptr.clone())
         };
         ro_mol_ffi::mol_to_smiles(cast_ptr)
@@ -45,8 +45,8 @@ impl RWMol {
     pub fn to_ro_mol(self) -> ROMol {
         let ptr = unsafe {
             std::mem::transmute::<
-                SharedPtr<rdkit_sys::rw_mol_ffi::RWMol>,
-                SharedPtr<rdkit_sys::ro_mol_ffi::ROMol>,
+                SharedPtr<rdk_sys::rw_mol_ffi::RWMol>,
+                SharedPtr<rdk_sys::ro_mol_ffi::ROMol>,
             >(self.ptr)
         };
         ROMol { ptr }

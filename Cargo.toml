@@ -15,9 +15,9 @@ documentation = ""
 [dependencies]
 cxx = "1.0"
 thiserror = "1"
-rdkit-sys = { path = "rdkit-sys", version = "0.1.0" }
+rdk-sys = { path = "./rdk-sys", version = "0.1.0"}
 bitvec = "1"
 byteorder = "1.4.3"
 
 [workspace]
-members = ["rdkit-sys"]
+members = ["rdk-sys"]

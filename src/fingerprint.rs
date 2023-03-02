@@ -5,8 +5,8 @@ use cxx::SharedPtr;
 pub struct Fingerprint(pub BitVec<u64, bitvec::order::Lsb0>);
 
 impl Fingerprint {
-    pub fn new(ptr: SharedPtr<rdkit_sys::fingerprint_ffi::ExplicitBitVect>) -> Self {
-        let unique_ptr_bytes = rdkit_sys::fingerprint_ffi::explicit_bit_vect_to_u64_vec(ptr);
+    pub fn new(ptr: SharedPtr<rdk_sys::fingerprint_ffi::ExplicitBitVect>) -> Self {
+        let unique_ptr_bytes = rdk_sys::fingerprint_ffi::explicit_bit_vect_to_u64_vec(ptr);
         let rust_bytes: Vec<_> = unique_ptr_bytes.into_iter().map(|x| *x).collect();
         let bits = bitvec::vec::BitVec::<_, Lsb0>::from_vec(rust_bytes);
         Fingerprint(bits)

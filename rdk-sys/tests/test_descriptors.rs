@@ -3,16 +3,16 @@ use cxx::let_cxx_string;
 #[test]
 fn test_descriptors() {
     let_cxx_string!(smile = "c1ccccc1C(=O)NC");
-    let mol = rdkit_sys::ro_mol_ffi::smiles_to_mol(&smile).unwrap();
+    let mol = rdk_sys::ro_mol_ffi::smiles_to_mol(&smile).unwrap();
 
-    let properties = rdkit_sys::descriptors_ffi::new_properties();
+    let properties = rdk_sys::descriptors_ffi::new_properties();
 
-    let names = rdkit_sys::descriptors_ffi::get_property_names(properties.clone());
+    let names = rdk_sys::descriptors_ffi::get_property_names(properties.clone());
     let names = names
         .into_iter()
         .map(|stringy| stringy.to_string())
         .collect::<Vec<_>>();
-    let computed = rdkit_sys::descriptors_ffi::compute_properties(properties, mol);
+    let computed = rdk_sys::descriptors_ffi::compute_properties(properties, mol);
     let computed = computed
         .into_iter()
         .map(|floaty| *floaty)
