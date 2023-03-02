@@ -8,9 +8,9 @@ license = "MIT/Apache-2.0"
 repository = "https://github.com/jcathalina/rdk-rs"
 readme = "README.md"
 keywords = ["rdkit", "ffi", "cheminformatics"]
-categories = ["external-ffi-bindings", "chemistry", "science"]
-homepage = ""
-documentation = ""
+categories = ["external-ffi-bindings", "science"]
+homepage = "https://jcathalina.github.io/"
+documentation = "https://jcathalina.github.io/"
 
 [dependencies]
 cxx = "1.0"

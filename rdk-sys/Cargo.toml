@@ -5,10 +5,9 @@ edition = "2021"
 authors = ["Julius Catahalina <julius.cathalina@gmail.com>"]
 description = "Low-level FFI Rust bindings for the RDKit C++ front-end"
 license = "MIT/Apache-2.0"
-repository = "https://github.com/jcathalina/rdkit-rs"
-readme = "README.md"
+repository = "https://github.com/jcathalina/rdk-rs"
 keywords = ["rdkit", "ffi", "cheminformatics"]
-categories = ["external-ffi-bindings", "chemistry", "science"]
+categories = ["external-ffi-bindings", "science"]
 build = "build.rs"
 
 [dependencies]

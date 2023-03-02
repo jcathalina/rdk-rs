@@ -11,18 +11,6 @@ namespace RDKit {
 
     bool substruct_match_as_bool(std::shared_ptr<ROMol> mol, std::shared_ptr<ROMol> other_mol, std::shared_ptr<SubstructMatchParameters> params) {
         std::vector<MatchVectType> match = SubstructMatch(*mol, *other_mol, *params);
-
-//        std::cout << "size: " << match.size() << std::endl;
-//        auto index = 0;
-//        for (auto &submatch: match) {
-//            auto pair_index = 0;
-//            for(auto &pair: submatch) {
-//                std::cout << index << " " << pair_index << " first: " << pair.first << " second: " << pair.second << std::endl;
-//                pair_index += 1;
-//            }
-//            index += 1;
-//        }
-
         return match.size() > 0;
     }
 
