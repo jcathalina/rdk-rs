@@ -9,6 +9,8 @@ repository = "https://github.com/jcathalina/rdk-rs"
 readme = "README.md"
 keywords = ["rdkit", "ffi", "cheminformatics"]
 categories = ["external-ffi-bindings", "chemistry", "science"]
+homepage = ""
+documentation = ""
 
 [dependencies]
 cxx = "1.0"
