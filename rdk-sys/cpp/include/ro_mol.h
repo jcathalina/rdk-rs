@@ -18,4 +18,6 @@ namespace RDKit {
     void smiles_parser_params_set_sanitize(std::shared_ptr<SmilesParserParams> params, bool sanitize);
 
     std::unique_ptr<std::vector<std::string>> detect_chemistry_problems(std::shared_ptr<ROMol> mol);
+
+    unsigned int get_num_atoms(std::shared_ptr<ROMol> mol);
 }
