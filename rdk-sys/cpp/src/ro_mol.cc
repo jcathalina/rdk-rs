@@ -7,6 +7,7 @@
 #include <GraphMol/MolStandardize/Tautomer.h>
 #include <GraphMol/MolOps.h>
 #include <GraphMol/MolChemicalFeatures/MolChemicalFeature.h>
+#include <GraphMol/Atom.h>
 
 namespace RDKit {
     using ExplicitBitVect = ::ExplicitBitVect;
@@ -52,4 +53,13 @@ namespace RDKit {
     unsigned int get_num_atoms(std::shared_ptr<ROMol> mol) {
         return mol->getNumAtoms();
     }
+    std::shared_ptr<Atom> get_atom_with_idx(std::shared_ptr<ROMol> mol, unsigned int idx) {
+        Atom *atom = mol->getAtomWithIdx(idx);
+        return std::shared_ptr<Atom>(atom);
+    }
+    // std::shared_ptr<CXXAtomIterator<MolGraph, Atom *>> atoms(std::shared_ptr<ROMol> mol) {
+    //     CXXAtomIterator<MolGraph, Atom *> atom_iterator = mol->atoms();
+    //     return std::make_shared<CXXAtomIterator<MolGraph, Atom *>>(atom_iterator);
+    // }
+
 }

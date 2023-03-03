@@ -7,6 +7,8 @@
 #include <DataStructs/ExplicitBitVect.h>
 #include <GraphMol/Fingerprints/Fingerprints.h>
 #include <GraphMol/MolStandardize/Tautomer.h>
+#include <GraphMol/MolChemicalFeatures/MolChemicalFeature.h>
+#include <GraphMol/Atom.h>
 
 namespace RDKit {
     std::shared_ptr<ROMol> copy_mol(std::shared_ptr<ROMol> mol);
@@ -20,4 +22,6 @@ namespace RDKit {
     std::unique_ptr<std::vector<std::string>> detect_chemistry_problems(std::shared_ptr<ROMol> mol);
 
     unsigned int get_num_atoms(std::shared_ptr<ROMol> mol);
+    std::shared_ptr<Atom> get_atom_with_idx(std::shared_ptr<ROMol> mol, unsigned int idx);
+    // std::shared_ptr<CXXAtomIterator<MolGraph, Atom *>> atoms(std::shared_ptr<ROMol> mol);
 }

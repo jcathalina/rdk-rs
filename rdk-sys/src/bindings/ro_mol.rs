@@ -6,6 +6,9 @@ pub mod ffi {
         pub type ROMol;
         pub type ExplicitBitVect = crate::fingerprint_ffi::ExplicitBitVect;
         pub type SmilesParserParams;
+        pub type Atom; 
+        // pub type CXXAtomIterator; // ?
+        // pub type MolGraph; // ?
 
         pub fn copy_mol(mol: SharedPtr<ROMol>) -> SharedPtr<ROMol>;
 
@@ -29,5 +32,7 @@ pub mod ffi {
         // pub fn mol_sanitize_exception_type() -> String;
         
         pub fn get_num_atoms(mol: SharedPtr<ROMol>) -> u32;
+        pub fn get_atom_with_idx(mol: SharedPtr<ROMol>, idx: u32) -> SharedPtr<Atom>;
+        // pub fn atoms(mol: SharedPtr<ROMol>) -> SharedPtr<CXXAtomIterator<MolGraph, Atom>>;
     }
 }
