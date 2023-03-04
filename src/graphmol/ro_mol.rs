@@ -1,16 +1,12 @@
 use std::fmt::{Debug, Formatter};
 
-use cxx::{let_cxx_string, SharedPtr};
+use cxx::let_cxx_string;
 use rdk_sys::*;
 
 use crate::{Fingerprint, RWMol};
 
 pub struct ROMol {
     pub(crate) ptr: cxx::SharedPtr<ro_mol_ffi::ROMol>,
-}
-
-pub struct Atom {
-    pub(crate) ptr: cxx::SharedPtr<ro_mol_ffi::Atom>,
 }
 
 #[derive(Debug, PartialEq, thiserror::Error)]
@@ -65,11 +61,6 @@ impl ROMol {
     pub fn get_num_atoms(&self) -> u32 {
         ro_mol_ffi::get_num_atoms(self.ptr.clone())
     }
-
-    pub fn get_atom_with_idx(&self, idx: u32) -> Atom {
-        let ptr = ro_mol_ffi::get_atom_with_idx(self.ptr.clone(), idx);
-        Atom { ptr }
-    }
 }
 
 impl Debug for ROMol {
@@ -86,13 +77,6 @@ impl Clone for ROMol {
         }
     }
 }
-
-// impl Debug for Atom {
-//     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
-//         let smile = self;
-//         f.debug_tuple("Atom").field(&smile).finish()
-//     }
-// }
 
 pub struct SmilesParserParams {
     pub(crate) ptr: cxx::SharedPtr<ro_mol_ffi::SmilesParserParams>,
