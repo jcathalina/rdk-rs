@@ -9,7 +9,7 @@
 ## :rocket: Getting started
 rdk-rs looks for dynamically linked (.so) files in the `$CONDA_PREFIX/lib/` directory within the conda installation of RDKit. To get up and running, simply run the following commands:
 <br>
-1. :snake: Install the latest [conda](https://github.com/conda-forge/miniforgehttps://docs.conda.io/en/latest/miniconda.html) distribution for your OS (we recommend mini/mambaforge)
+1. :snake: Install the latest [conda](https://github.com/conda-forge/miniforge) distribution for your OS (we recommend mini/mambaforge)
 2. :package: Create a conda environment that includes a stable version of RDKit by running the commands below and activate it. Feel free to change the environment name `rdkit-env` to whatever you want.
 ```bash
 mamba create -c conda-forge python=3.8 -n rdkit-env
