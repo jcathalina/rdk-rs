@@ -6,6 +6,5 @@
 
 namespace RDKit {
     std::shared_ptr<Atom> atom_from_symbol(const std::string &symbol);
-
     rust::String get_symbol(std::shared_ptr<Atom> atom);
 }

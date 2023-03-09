@@ -15,7 +15,7 @@ documentation = "https://jcathalina.github.io/"
 [dependencies]
 cxx = "1.0"
 thiserror = "1"
-rdk-sys = { path = "./rdk-sys", version = "0.1.0"}
+rdk-sys = { path = "./rdk-sys", version = "0.1.1" }
 bitvec = "1"
 byteorder = "1.4.3"
 

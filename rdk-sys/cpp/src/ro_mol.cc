@@ -53,4 +53,9 @@ namespace RDKit {
     unsigned int get_num_atoms(std::shared_ptr<ROMol> mol) {
         return mol->getNumAtoms();
     }
+    
+    std::shared_ptr<Atom> get_atom_with_idx(std::shared_ptr<ROMol> mol, size_t idx) {
+        Atom * atom = mol->getAtomWithIdx(idx);
+        return std::make_shared<Atom>(*atom);
+    }
 }

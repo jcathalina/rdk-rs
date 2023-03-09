@@ -3,10 +3,15 @@ use std::fmt::{Debug, Formatter};
 use cxx::let_cxx_string;
 use rdk_sys::*;
 
-use crate::{Fingerprint, RWMol};
+use crate::{Atom, Fingerprint, RWMol};
 
 pub struct ROMol {
     pub(crate) ptr: cxx::SharedPtr<ro_mol_ffi::ROMol>,
+}
+
+pub struct ROMolAtomIterator<'a> {
+    ro_mol: &'a ROMol,
+    curr: usize,
 }
 
 #[derive(Debug, PartialEq, thiserror::Error)]
@@ -14,7 +19,7 @@ pub enum ROMolError {
     #[error("could not convert smile to romol (nullptr)")]
     UnknownConversionError,
     #[error("could not convert smile to romol (exception)")]
-    ConversionException(String)
+    ConversionException(String),
 }
 
 impl ROMol {
@@ -28,10 +33,8 @@ impl ROMol {
                 } else {
                     Ok(ROMol { ptr })
                 }
-            },
-            Err(e) => {
-                Err(ROMolError::ConversionException(e.to_string()))
             }
+            Err(e) => Err(ROMolError::ConversionException(e.to_string())),
         }
     }
 
@@ -61,6 +64,18 @@ impl ROMol {
     pub fn get_num_atoms(&self) -> u32 {
         ro_mol_ffi::get_num_atoms(self.ptr.clone())
     }
+
+    pub fn get_atom(&self, idx: usize) -> Atom {
+        let ptr = ro_mol_ffi::get_atom_with_idx(self.ptr.clone(), idx);
+        Atom { ptr }
+    }
+
+    pub fn iter(&self) -> ROMolAtomIterator {
+        ROMolAtomIterator {
+            ro_mol: self,
+            curr: 0,
+        }
+    }
 }
 
 impl Debug for ROMol {
@@ -74,6 +89,21 @@ impl Clone for ROMol {
     fn clone(&self) -> Self {
         ROMol {
             ptr: rdk_sys::ro_mol_ffi::copy_mol(self.ptr.clone()),
+        }
+    }
+}
+
+impl<'a> Iterator for ROMolAtomIterator<'a> {
+    type Item = Atom;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        let num_atoms = self.ro_mol.get_num_atoms() as usize;
+        if self.curr < num_atoms {
+            let curr_atom = Some(self.ro_mol.get_atom(self.curr));
+            self.curr += 1;
+            curr_atom
+        } else {
+            None
         }
     }
 }

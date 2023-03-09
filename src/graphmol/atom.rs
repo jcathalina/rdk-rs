@@ -12,7 +12,7 @@ pub enum AtomError {
     #[error("could not convert symbol to atom (nullptr)")]
     UnknownConversionError,
     #[error("could not convert smile to romol (exception)")]
-    ConversionException(String)
+    ConversionException(String),
 }
 
 impl Atom {
@@ -26,10 +26,8 @@ impl Atom {
                 } else {
                     Ok(Atom { ptr })
                 }
-            },
-            Err(e) => {
-                Err(AtomError::ConversionException(e.to_string()))
             }
+            Err(e) => Err(AtomError::ConversionException(e.to_string())),
         }
     }
 
