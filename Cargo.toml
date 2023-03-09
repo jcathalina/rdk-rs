@@ -1,6 +1,6 @@
 [package]
 name = "rdk-rs"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 authors = ["Julius Catahalina <julius.cathalina@gmail.com>"]
 description = "Rust wrappers for the RDKit C++ front-end"

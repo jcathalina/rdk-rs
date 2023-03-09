@@ -17,4 +17,7 @@ fn main() {
     }
 
     let atom_iter2 = mol.iter();
+    for a in atom_iter2 {
+        println!("{:?}", a);
+    }
 }
