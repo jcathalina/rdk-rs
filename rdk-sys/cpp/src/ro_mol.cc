@@ -6,6 +6,8 @@
 #include <GraphMol/Fingerprints/Fingerprints.h>
 #include <GraphMol/MolStandardize/Tautomer.h>
 #include <GraphMol/MolOps.h>
+#include <GraphMol/MolChemicalFeatures/MolChemicalFeature.h>
+#include <GraphMol/Atom.h>
 
 namespace RDKit {
     using ExplicitBitVect = ::ExplicitBitVect;
@@ -46,5 +48,14 @@ namespace RDKit {
         }
 
         return std::unique_ptr<std::vector<std::string>>(get_types);
+    }
+
+    unsigned int get_num_atoms(std::shared_ptr<ROMol> mol) {
+        return mol->getNumAtoms();
+    }
+    
+    std::shared_ptr<Atom> get_atom_with_idx(std::shared_ptr<ROMol> mol, size_t idx) {
+        Atom * atom = mol->getAtomWithIdx(idx);
+        return std::make_shared<Atom>(*atom);
     }
 }

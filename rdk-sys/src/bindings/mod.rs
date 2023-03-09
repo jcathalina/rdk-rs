@@ -15,3 +15,6 @@ pub use rw_mol::ffi as rw_mol_ffi;
 
 mod substruct_match;
 pub use substruct_match::ffi as substruct_match_ffi;
+
+mod atom;
+pub use atom::ffi as atom_ffi;

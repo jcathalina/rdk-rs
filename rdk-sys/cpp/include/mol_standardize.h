@@ -24,8 +24,6 @@ namespace RDKit {
 
     std::shared_ptr<Uncharger> new_uncharger(bool canonical);
     std::shared_ptr<ROMol> uncharger_uncharge(std::shared_ptr<Uncharger> uncharger, std::shared_ptr<ROMol> mol);
-
     std::shared_ptr<RWMol> fragment_parent(std::shared_ptr<RWMol> rw_mol, std::shared_ptr<CleanupParameters> cleanup_params, bool skip_standardize);
-
     std::shared_ptr<RWMol> normalize(std::shared_ptr<RWMol> mol, std::shared_ptr<CleanupParameters> cleanup_params);
 }
