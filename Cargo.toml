@@ -21,3 +21,6 @@ byteorder = "1.4.3"
 
 [workspace]
 members = ["rdk-sys"]
+
+[features]
+default = ["rdk-sys/conda"]

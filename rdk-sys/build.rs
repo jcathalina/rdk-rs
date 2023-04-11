@@ -7,7 +7,7 @@ fn main() {
 
     env_logger::init();
 
-    let use_conda = std::env::var("CARGO_FEATURE_DYNAMIC_LINKING_FROM_CONDA").is_ok();
+    let use_conda = std::env::var("CARGO_FEATURE_CONDA").is_ok();
 
     let mut lib_paths = vec![];
     let mut include_paths = vec![];
