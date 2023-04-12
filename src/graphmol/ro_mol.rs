@@ -129,3 +129,13 @@ impl Default for SmilesParserParams {
         }
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use crate::ROMol;
+
+    #[test]
+    fn test_rdmol() {
+        let _ = ROMol::from_smile("c1ccccc1C(=O)NC").unwrap();
+    }
+}
