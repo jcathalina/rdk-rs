@@ -1,5 +1,5 @@
 [package]
-name = "rdk-rs"
+name = "rdk"
 version = "0.1.1"
 edition = "2021"
 authors = ["Julius Catahalina <julius.cathalina@gmail.com>"]

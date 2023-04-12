@@ -1,4 +1,4 @@
-use rdk_rs::{Atom, ROMol};
+use rdk::{Atom, ROMol};
 
 fn main() {
     let mol = ROMol::from_smile("CCC").unwrap();
