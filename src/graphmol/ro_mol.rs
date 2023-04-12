@@ -76,6 +76,10 @@ impl ROMol {
             curr: 0,
         }
     }
+
+    pub fn as_inchi(&self) -> String {
+        inchi_ffi::mol_to_inchi(self.ptr.clone())
+    }
 }
 
 impl Debug for ROMol {

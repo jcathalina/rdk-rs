@@ -18,3 +18,6 @@ pub use substruct_match::ffi as substruct_match_ffi;
 
 mod atom;
 pub use atom::ffi as atom_ffi;
+
+mod inchi;
+pub use inchi::ffi as inchi_ffi;
