@@ -1,4 +1,4 @@
-use rdk::{Atom, ROMol, inchi_to_inchi_key};
+use rdk::{Atom, ROMol, inchi_to_inchi_key, inchi_to_mol};
 
 fn main() {
     let mol = ROMol::from_smile("CCC").unwrap();
@@ -26,4 +26,7 @@ fn main() {
 
     let key = inchi_to_inchi_key(&inchi).unwrap();
     println!("key: {}", key);
+
+    let mol_from_inchi = inchi_to_mol(&inchi).unwrap();
+    println!("mol_from_inchi: {:?}", mol_from_inchi);
 }
