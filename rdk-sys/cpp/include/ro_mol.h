@@ -18,6 +18,8 @@ namespace RDKit {
     std::shared_ptr<ROMol> smiles_to_mol_with_params(const std::string &smiles, std::shared_ptr<SmilesParserParams> params);
     std::shared_ptr<SmilesParserParams> new_smiles_parser_params();
     void smiles_parser_params_set_sanitize(std::shared_ptr<SmilesParserParams> params, bool sanitize);
+    std::shared_ptr<ROMol> smarts_to_mol(const std::string &smarts);
+    std::shared_ptr<ROMol> smarts_to_mol_with_params(const std::string &smarts, std::shared_ptr<SmartsParserParams> params);
     std::unique_ptr<std::vector<std::string>> detect_chemistry_problems(std::shared_ptr<ROMol> mol);
     unsigned int get_num_atoms(std::shared_ptr<ROMol> mol);
     std::shared_ptr<Atom> get_atom_with_idx(std::shared_ptr<ROMol> mol, size_t idx);

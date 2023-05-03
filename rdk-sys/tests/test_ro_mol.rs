@@ -47,3 +47,10 @@ fn parse_without_sanitize_test() {
         "AtomValenceException"
     );
 }
+
+#[test]
+fn test_default_parse_smarts_to_mol() {
+    cxx::let_cxx_string!(sma = "[C:1](=[O:2])O.[N:3]");
+    let romol = rdk_sys::ro_mol_ffi::smarts_to_mol(&sma).unwrap();
+    assert!(!romol.is_null());
+}

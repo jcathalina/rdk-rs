@@ -24,6 +24,8 @@ pub mod ffi {
 
         pub fn mol_to_smiles(mol: SharedPtr<ROMol>) -> String;
 
+        pub fn smarts_to_mol(sma: &CxxString) -> Result<SharedPtr<ROMol>>;
+
         // 0b11111111
         pub type MolSanitizeException;
         pub fn detect_chemistry_problems(mol: SharedPtr<ROMol>) -> UniquePtr<CxxVector<CxxString>>;
@@ -31,5 +33,17 @@ pub mod ffi {
 
         pub fn get_num_atoms(mol: SharedPtr<ROMol>) -> u32;
         pub fn get_atom_with_idx(mol: SharedPtr<ROMol>, idx: usize) -> SharedPtr<Atom>;
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use crate::ro_mol_ffi;
+
+    #[test]
+    fn test_default_parse_smarts_to_mol() {
+        cxx::let_cxx_string!(sma = "[C:1](=[O:2])O.[N:3]");
+        let romol = ro_mol_ffi::smarts_to_mol(&sma).unwrap();
+        assert!(!romol.is_null());
     }
 }

@@ -38,6 +38,15 @@ namespace RDKit {
         return MolToSmiles(*mol);
     }
 
+    std::shared_ptr<ROMol> smarts_to_mol(const std::string &smarts) {
+        ROMol *mol = SmartsToMol(smarts);
+        return std::shared_ptr<ROMol>(new ROMol(*mol));
+    }
+    std::shared_ptr<ROMol> smarts_to_mol_with_params(const std::string &smarts, std::shared_ptr<SmartsParserParams> params) {
+        ROMol *mol = SmartsToMol(smarts, *params);
+        return std::shared_ptr<ROMol>(new ROMol(*mol));
+    }
+
     std::unique_ptr<std::vector<std::string>> detect_chemistry_problems(std::shared_ptr<ROMol> mol) {
         std::vector<std::unique_ptr<RDKit::MolSanitizeException>> exceptions = RDKit::MolOps::detectChemistryProblems(*mol);
         std::vector<std::string> *get_types = new std::vector<std::string>;
